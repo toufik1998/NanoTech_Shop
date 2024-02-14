@@ -10,7 +10,7 @@ const ProductScreen = () => {
 
     useEffect(() => {
         const fetchProduct = async () => {
-            const {data} = await axios.get(`/api/products/${product}`);
+            const {data} = await axios.get(`/api/products/${productId}`);
             setProduct(data);
         }
 
@@ -36,6 +36,9 @@ const ProductScreen = () => {
                     </ListGroup.Item>
                     <ListGroup.Item>
                         Price: ${product.price}
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+                        Price: ${product.description}
                     </ListGroup.Item>
                 </ListGroup>
             </Col>
