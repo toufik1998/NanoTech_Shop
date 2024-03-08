@@ -12,7 +12,9 @@ import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ShippingScreen from './screens/ShippingScreen';
 import PaymentScreen from './screens/PaymentScreen';
+import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import PrivateRoute from './components/PrivateRoute';
+
 
 
 const App = () => {
@@ -32,6 +34,7 @@ const App = () => {
               <Route path="/" element={<PrivateRoute />}>
                 <Route path="/shipping" element={<ShippingScreen />} />
                 <Route path="/payment" element={<PaymentScreen />} />
+                <Route path="/placeorder" element={<PlaceOrderScreen />} />
               </Route>
 
 
