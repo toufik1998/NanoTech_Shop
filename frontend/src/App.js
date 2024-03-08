@@ -10,6 +10,8 @@ import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import ShippingScreen from './screens/ShippingScreen';
+import PrivateRoute from './components/PrivateRoute';
 
 const App = () => {
   return (
@@ -18,13 +20,20 @@ const App = () => {
       <Header />
       <main className='py-3'>
         <Container>
-          <Routes>
-            <Route path="/" exact element={<HomeScreen />} />
-            <Route path="/products/:id" exact element={<ProductScreen />} />
-            <Route path='/cart' exact element={<CartScreen />}/>
-            <Route path='/login' exact element={<LoginScreen />}/>
-            <Route path='/register' exact element={<RegisterScreen />}/>
-          </Routes>
+            <Routes>
+              <Route path="/" exact element={<HomeScreen />} />
+              <Route path="/products/:id" exact element={<ProductScreen />} />
+              <Route path='/cart' exact element={<CartScreen />}/>
+              <Route path='/login' exact element={<LoginScreen />}/>
+              <Route path='/register' exact element={<RegisterScreen />}/>
+
+              <Route path="/" element={<PrivateRoute />}>
+                <Route path="/shipping" element={<ShippingScreen />} />
+              </Route>
+
+
+            </Routes>
+          
         </Container>
       </main>
       <Footer />
