@@ -54,7 +54,7 @@ const getMyOrders = asyncHandler(async (req, res) => {
 // @route   POST /api/orders/:id
 // @access  Private
 const getOrderById = asyncHandler(async (req, res) => {
-    const order = await Order.findById({ id: req.params.id }).populate('user', 'name email');
+    const order = await Order.findById({ _id: req.params.id }).populate('user', 'name email');
 
     if (order) {
         res.status(200).json(order);
