@@ -12,7 +12,7 @@ import { clearCartItems } from '../slices/cartSlice'
 const PlaceOrderScreen = () => {
     const cart = useSelector((state) => state.cart);
     // const { shippingAddress, paymentMethod, cartItems, itemsPrise, taxPrice, totalPrice } = cart;
-
+    console.log(cart);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -35,7 +35,7 @@ const PlaceOrderScreen = () => {
                 orderItems: cart.cartItems,
                 shippingAddress: cart.shippingAddress,
                 paymentMethod: cart.paymentMethod,
-                itemsPrice: cart.itemsPrise,
+                itemsPrice: cart.itemsPrice,
                 taxPrice:cart.taxPrice,
                 shippingPrice: cart.shippingPrice,
                 totalPrice: cart.totalPrice,
@@ -101,7 +101,7 @@ const PlaceOrderScreen = () => {
                         <ListGroup.Item>
                             <Row>
                                 <Col>Items</Col>
-                                <Col>${cart.itemsPrise}</Col>
+                                <Col>${cart.itemsPrice}</Col>
                             </Row>
                         </ListGroup.Item>
                         <ListGroup.Item>
