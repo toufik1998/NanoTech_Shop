@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { PayPalButtons, usePayPalScriptReducer, FUNDING, PayPalMarks} from '@paypal/react-paypal-js';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
-import { useGetOrderDetailsQuery, usePayOrderMutation, useGetPaypalClientIdQuery } from '../slices/orderApiSlice';
+import { useGetOrderDetailsQuery, usePayOrderMutation, useGetPaypalClientIdQuery, useDeliverOrderMutation } from '../slices/orderApiSlice';
 
 import React from 'react'
 
@@ -18,6 +18,8 @@ const OrderScreen = () => {
     const [payOrder, { isLoading: loadingPay }] = usePayOrderMutation();
   
     const { data: paypall, error: errorPayPal, isLoading: loadingPayPal } = useGetPaypalClientIdQuery();
+
+    const [deliverOrder, { isLoading: loadingDeliverOrder }] = useDeliverOrderMutation();
 
     const [{ isPending, isRejected, isFulfilled }, paypalDispatch] = usePayPalScriptReducer();
 
@@ -61,9 +63,11 @@ const OrderScreen = () => {
         refetch();
         toast.success('Payment successful')
     }
+
     function onError (err) {
         toast.error(err.message);
     }
+
     function createOrder (dataa, actions) {
         return actions.order.create({
             purchase_units: [
@@ -76,6 +80,16 @@ const OrderScreen = () => {
         }).then((orderID) => {
             return orderID;
         })
+    }
+
+    const deliverOrderHandler = async () => {
+        try {
+            await deliverOrder(orderId);
+            refetch();
+            toast.success('Order delivered');
+        } catch (error) {
+            toast.error(error?.data?.message || error.message);
+        }
     }
 
   
@@ -214,6 +228,21 @@ const OrderScreen = () => {
                                     </div>
                                 )}
                             </ListGroup.Item>
+                        )}
+
+                        {loadingDeliverOrder && <Loader />}
+
+                        {userInfo && userInfo.isAdmin && data.isPaid && !data.isDelivered && (
+                            <ListGroup.Item>
+                                <Button
+                                    type='button'
+                                    className='btn btn-block'
+                                    onClick={deliverOrderHandler}
+                                >
+                                    Mark As Delivered
+                                </Button>
+                            </ListGroup.Item>
+                        
                         )}
                     </ListGroup>
                     </Card>
