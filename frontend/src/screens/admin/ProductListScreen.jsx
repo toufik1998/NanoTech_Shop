@@ -4,7 +4,7 @@ import { FaTimes, FaEdit, FaTrash } from "react-icons/fa"
 import {toast} from "react-toastify"
 import Message from "../../components/Message"
 import Loader from "../../components/Loader"
-import { useGetProductsQuery, useCreateProductMutation } from "../../slices/productsApiSlice"
+import { useGetProductsQuery, useCreateProductMutation, useDeleteProductMutation } from "../../slices/productsApiSlice"
 
 
 const ProductListScreen = () => {
@@ -12,14 +12,25 @@ const ProductListScreen = () => {
     
     const [createProduct, {isLoading: loadingCreate }] = useCreateProductMutation();
 
-    const deletHandler = (id) => {
-        console.log(id);
+    const [deleteProduct, {isLoading: loadingDelete}] = useDeleteProductMutation();
+
+    const deletHandler = async (id) => {
+        if(window.confirm('Are you sure you want to delete')) {
+            try {
+                await deleteProduct(id);
+                toast.success('Product deleted successfully');
+                refetch();
+            } catch (error) {
+                toast.error(error?.data?.message || error.error);
+            }
+        }
     }
 
     const createProductHandler = async (id) => {
-        if(window.confirm('Are you sure you want to delete')) {
+        if(window.confirm('Are you sure you want to create a product?')) {
             try {
                 await createProduct();
+                toast.success('Product created successfully');
                 refetch();
             } catch (error) {
                 toast.error(error?.data?.message || error.error);
@@ -43,6 +54,7 @@ const ProductListScreen = () => {
         </Row>
 
         {loadingCreate && <Loader />}
+        {loadingDelete && <Loader />}
 
         {isLoading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
             <>
