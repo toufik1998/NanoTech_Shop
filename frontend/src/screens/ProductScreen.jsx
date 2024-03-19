@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
+import Meta from '../components/Meta';
 import { useGetProductDetailsQuery, useCreateReviewMutation } from '../slices/productsApiSlice' 
 import { Form, Row, Col, Image, ListGroup, Card, Button, ListGroupItem } from 'react-bootstrap'
 import Rating from '../components/Rating'
@@ -58,6 +59,7 @@ const ProductScreen = () => {
             ) :
             (
                 <>
+                    <Meta title={product.name} />
                     <Row>
                         <Col md={5}>
                             <Image src={product.image} alt={product.name} fluid />
