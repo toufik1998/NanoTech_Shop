@@ -5,6 +5,7 @@ import { logout } from '../slices/authSlice';
 import {  Badge, Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { FaShoppingCart, FaUser } from 'react-icons/fa'
+import SearchBox from './SearchBox';
 import  logo from '../assets/logo.png' 
 
 const Header = () => {
@@ -38,6 +39,7 @@ const Header = () => {
                 <Navbar.Toggle  aria-controls='basic-navbar-nav'/>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className='ms-auto'>
+                        <SearchBox />
                         <LinkContainer to='/cart'>
                             <Nav.Link >
                                 <FaShoppingCart/> Cart
