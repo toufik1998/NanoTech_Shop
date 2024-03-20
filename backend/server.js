@@ -1,6 +1,7 @@
 import path from 'path';
 import express from 'express';
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
+import cors from 'cors';
 import cookieParser from 'cookie-parser';
 dotenv.config();
 import connectDB from './config/db.js';
@@ -21,6 +22,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // Cookie parser middleware
 app.use(cookieParser());
+app.use(cors()); // cors middleware
+
 
 
 
