@@ -6,7 +6,7 @@ import Product from '../models/productModul.js';
 // @access public
 const getProducts = asyncHandler(async (req, res) => {
 
-    const pageSize = 4;
+    const pageSize = process.env.PAGINATION_LIMIT;
     const page = Number(req.query.pageNumber) || 1;
 
 
