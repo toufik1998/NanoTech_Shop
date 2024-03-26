@@ -1,0 +1,45 @@
+# Ignore development and build artifacts
+node_modules/
+build/
+dist/
+tmp/
+logs/
+
+# Ignore package manager files
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Ignore version control files and directories
+.git/
+.gitignore
+.gitattributes
+.gitlab-ci.yml
+
+# Ignore editor and IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+
+# Ignore test and documentation files
+coverage/
+docs/
+test/
+
+# Ignore environment-specific files
+.env
+.env.local
+.env.*.local
+.env.*.production
+.env.production
+
+# Ignore specific files
+docker-compose.override.yml
+
+# Ignore miscellaneous files and directories
+*.log
+*.tmp
+.DS_Store
+Thumbs.db

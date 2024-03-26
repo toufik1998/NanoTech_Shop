@@ -22,7 +22,23 @@ app.use(express.urlencoded({ extended: true }));
 
 // Cookie parser middleware
 app.use(cookieParser());
-app.use(cors()); // cors middleware
+// app.use(cors()); // cors middleware
+const allowedOrigins = ["http://127.0.0.1:3000"];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+
+
 
 
 
