@@ -6,7 +6,7 @@ import React from 'react'
 const Paginate = ({ pages, page, isAdmin = false, keyword = '' }) => {
   return (
     pages > 1 && (
-        <Pagination>
+        <Pagination className="d-flex justify-content-center align-content-center my-3">
             {[...Array(pages).keys()].map((x) => (
             <LinkContainer
                 key={x + 1}

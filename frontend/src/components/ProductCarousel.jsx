@@ -12,7 +12,7 @@ const ProductCarousel = () => {
 
   return (
     isLoading 
-        ? <Loader /> 
+        ? null
         : error 
         ? <Message variant='danger'>{error?.data?.message || error.error}</Message> 
         : (
