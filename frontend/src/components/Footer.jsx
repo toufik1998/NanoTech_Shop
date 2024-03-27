@@ -5,15 +5,14 @@ const Footer = () => {
 
   return (
     <footer>
-        <Container>
-            <Row>
-                <Col className='text-center py-3'>
+            <Row className='px-5 bg-primary'>
+                <Col className='text-center pt-3'>
                     <p>NanoTech Shop &copy; {currentYear}</p>
                 </Col>
             </Row>
-        </Container>
     </footer>
   )
 }
 
 export default Footer
+
