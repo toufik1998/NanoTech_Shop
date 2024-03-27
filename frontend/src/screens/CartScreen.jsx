@@ -40,7 +40,7 @@ const CartScreen = () => {
                                     <Image src={cartItem.image} alt={cartItem.name} fluid rounded/>
                                 </Col>
                                 <Col md={3}>
-                                    <Link to={`/products/${cartItem._id}`} style={{ textDecoration: 'none' }}>{cartItem.name}</Link>
+                                    <Link to={`/products/${cartItem._id}`} >{cartItem.name}</Link>
                                 </Col>
                                 <Col md={2}>
                                     {cartItem.price}

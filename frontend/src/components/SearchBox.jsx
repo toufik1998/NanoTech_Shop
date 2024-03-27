@@ -18,25 +18,23 @@ const SearchBox = () => {
         }
     }
   return (
-    <Form onSubmit={submitHandler}>
-        <Form.Group className='d-flex align-items-center'>
+    <Form onSubmit={submitHandler} className='d-flex'>
             <Form.Control 
                 type='text' 
                 name='q' 
                 onChange={(e) => setSearchKeyword(e.target.value)}
                 placeholder='Search Products...' 
-                className='me-sm-2 ms-sm-5'
+                className='mr-sm-2 ml-sm-5'
                 value={searchKeyword}
             ></Form.Control>
             <Button 
                 type='submit' 
-                variant='outline-light' 
+                variant='outline-success'  
                 className='p-2 mx-2'
                 
             >
                 Search
             </Button>
-        </Form.Group>
     </Form>
   )
 }

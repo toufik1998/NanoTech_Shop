@@ -177,7 +177,7 @@ const ProductScreen = () => {
                                                 >
                                                 </Form.Control>
                                             </Form.Group>
-                                            <Button disabled={reviewLoading} type='submit' variant='outline-info'>Submit</Button>
+                                            <Button disabled={reviewLoading} type='submit' variant='primary'>Submit</Button>
                                         </Form>
                                     ) : (
                                         <Message>Please <Link to='/login'>sign in</Link> to write a review</Message>

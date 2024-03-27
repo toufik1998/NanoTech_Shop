@@ -30,7 +30,7 @@ const Header = () => {
     };
   return (
     <header>
-        <Navbar bg="dark" variant='dark' expand="md" collapseOnSelect>
+        <Navbar bg="primary" variant='dark' expand="md"  collapseOnSelect>
             <Container>
                 <LinkContainer to='/'>
                     <Navbar.Brand> 
@@ -47,7 +47,7 @@ const Header = () => {
                                 <FaShoppingCart/> Cart
                                 {
                                     cartItems.length > 0 && (
-                                        <Badge pill style={{ marginLeft: '5px' }}>
+                                        <Badge pill bg='success' style={{ marginLeft: '5px' }}>
                                             { cartItems.reduce((a, c) => a + c.qty, 0) }
                                         </Badge>
                                     )
@@ -76,8 +76,9 @@ const Header = () => {
                             )
                         }
 
+                        {/* admin links */}
                         {userInfo && userInfo.isAdmin &&  (
-                            <NavDropdown title='Admin' id='adminmenu'>
+                            <NavDropdown title='Admin' id='adminmenu' className='dropdown-class' >
                                 <LinkContainer to='/admin/userlist'>
                                     <NavDropdown.Item>Users</NavDropdown.Item>
                                 </LinkContainer>

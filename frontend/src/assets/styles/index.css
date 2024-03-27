@@ -1,5 +1,13 @@
+body {
+  overflow-x: hidden;
+}
+
 main {
   min-height: 80vh;
+}
+
+.dropdown-class {
+  width: 100px; /* adjust this value to your needs */
 }
 
 .rating span {

@@ -44,13 +44,13 @@ const ProductListScreen = () => {
 
   return (
     <>
-        <Row>
+        <Row className="align-items-center">
             <Col>
                 <h1>Products</h1>
             </Col>
             <Col className='text-end'>
                 {/* <LinkContainer to='/admin/productlist/create'> */}
-                    <Button className='btn-sm my-3' onClick={createProductHandler}>
+                    <Button className='my-3' onClick={createProductHandler}>
                         <FaEdit /> Create Product
                     </Button>
                 {/* </LinkContainer> */}

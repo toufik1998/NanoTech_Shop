@@ -37,10 +37,14 @@ const authUser = asyncHandler(async (req, res) => {
 const registerUser = asyncHandler(async (req, res) => {
     const { name, email, password } = req.body;
 
+    if (!name || !email || !password) {
+        return res.status(400).json({ message: 'Invalid user data' });
+    }
+
     const userExists = await User.findOne({ email });
 
     if(userExists) {
-        res.status(400);
+        res.status(400).json({ message: 'User already exists'});
         throw new Error('User already exists');
     }
 
@@ -60,9 +64,10 @@ const registerUser = asyncHandler(async (req, res) => {
             isAdmin: user.isAdmin,
         });
     }else{
-        res.status(400);
         throw new Error('Invalid user data');
     }
+
+    
 });
 
 
